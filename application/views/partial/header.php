@@ -75,7 +75,7 @@
 		<![endif]-->
 		<!-- start mincss template tags -->
 		<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=afbb40b305"/>
+		<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=d0bbe25210"/>
 		<!-- end mincss template tags -->
 
 		<!-- Tweaks to the UI for a particular theme should drop here  -->
@@ -84,7 +84,7 @@
 	<?php } ?>
 
 		<!-- start minjs template tags -->
-		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=32a09a5d0e"></script>
+		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=42215ed4da"></script>
 		<!-- end minjs template tags -->
 	<?php endif; ?>
 

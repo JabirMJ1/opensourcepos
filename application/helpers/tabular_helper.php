@@ -38,7 +38,7 @@ function transform_headers($array, $readonly = FALSE, $editable = TRUE)
 
 	foreach($array as $element)
 	{
-		reset($element);
+		reset($element); 
 		$result[] = array('field' => key($element),
 			'title' => current($element),
 			'switchable' => isset($element['switchable']) ? $element['switchable'] : !preg_match('(^$|&nbsp)', current($element)),
@@ -76,7 +76,8 @@ function get_sales_manage_table_headers()
 	}
 
 	$headers[] = array('receipt' => '&nbsp', 'sortable' => FALSE);
-
+	echo json_encode(($headers));
+	echo json_encode(transform_headers($headers));
 	return transform_headers($headers);
 }
 
