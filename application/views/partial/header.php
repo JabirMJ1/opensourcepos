@@ -89,11 +89,8 @@
 	<?php } ?>
 
 		<!-- start minjs template tags -->
-<<<<<<< HEAD
-		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=42215ed4da"></script>
-=======
+
 		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=64a537c419"></script>
->>>>>>> upstream/master
 		<!-- end minjs template tags -->
 	<?php endif; ?>
 
