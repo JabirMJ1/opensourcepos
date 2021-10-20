@@ -77,7 +77,7 @@ class Sales extends Secure_Controller
 		$sales = $this->Sale->search($search, $filters, $limit, $offset, $sort, $order);
 		$total_rows = $this->Sale->get_found_rows($search, $filters);
 		$payments = $this->Sale->get_payments_summary($search, $filters);
-		$payment_summary = $this->xss_clean(get_sales_manage_payments_summary($payments, $sales));
+		$payment_summary = $this->xss_clean(get_sales_manage_payments_summary($payments));
 
 		$data_rows = array();
 		foreach($sales->result() as $sale)
@@ -418,7 +418,14 @@ class Sales extends Secure_Controller
 			$kit_price_option = $item_kit_info->price_option;
 			$kit_print_option = $item_kit_info->print_option; // 0-all, 1-priced, 2-kit-only
 
-			if($item_kit_info->kit_discount != 0 && $item_kit_info->kit_discount > $discount)
+			if($discount_type == $item_kit_info->kit_discount_type)
+			{
+				if($item_kit_info->kit_discount > $discount)
+				{
+					$discount = $item_kit_info->kit_discount;
+				}
+			}
+			else
 			{
 				$discount = $item_kit_info->kit_discount;
 				$discount_type = $item_kit_info->kit_discount_type;
@@ -428,7 +435,7 @@ class Sales extends Secure_Controller
 
 			if(!empty($kit_item_id))
 			{
-				if(!$this->sale_lib->add_item($kit_item_id, $quantity, $item_location, $discount, $discount_type, PRICE_MODE_STANDARD, NULL, NULL, $price))
+				if(!$this->sale_lib->add_item($kit_item_id, $quantity, $item_location, $discount, $discount_type, PRICE_MODE_KIT, $kit_price_option, $kit_print_option, $price))
 				{
 					$data['error'] = $this->lang->line('sales_unable_to_add_item');
 				}
@@ -476,8 +483,8 @@ class Sales extends Secure_Controller
 		$serialnumber = $this->input->post('serialnumber');
 		$price = parse_decimals($this->input->post('price'));
 		$quantity = parse_quantity($this->input->post('quantity'));
-		$discount = parse_decimals($this->input->post('discount'));
 		$discount_type = $this->input->post('discount_type');
+		$discount = $discount_type ? parse_quantity($this->input->post('discount')) : parse_decimals($this->input->post('discount'));
 
 		$item_location = $this->input->post('location');
 		$discounted_total = $this->input->post('discounted_total') != '' ? $this->input->post('discounted_total') : NULL;
@@ -1476,6 +1483,11 @@ class Sales extends Secure_Controller
 		$this->change_register_mode($this->sale_lib->get_sale_type());
 
 		$this->_reload();
+	}
+	
+	public function sales_keyboard_help()
+	{
+		$this->load->view('sales/help');
 	}
 
 	public function check_invoice_number()

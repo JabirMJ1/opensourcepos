@@ -17,7 +17,7 @@ Local install
 
 First of all, if you're seeing the message **'system folder missing'** after launching your browser, then that means you have cloned the repository and have not built the project properly.
 
-1. Dowload the latest [stable release](https://github.com/opensourcepos/opensourcepos/releases) from github or [unstable build](https://bintray.com/jekkos/opensourcepos/opensourcepos/view/files?sort=updated&order=asc#files) from bintray. A regular repository clone will not work unless you are brave enough to build the whole project!
+1. Dowload the latest stable or prerelease for a specific branch [from github](https://github.com/opensourcepos/opensourcepos/releases). A regular repository clone will not work unless you are brave enough to build the whole project!
 2. Create/locate a new mysql database to install open source point of sale into
 3. Execute the file database/database.sql to create the tables needed
 4. unzip and upload Open Source Point of Sale files to web server
@@ -79,37 +79,3 @@ Cloud install
 If you choose *DigitalOcean*:
 [Through this link](https://m.do.co/c/ac38c262507b), you will get a *$100 credit* for a first month. [Check the wiki](https://github.com/opensourcepos/opensourcepos/wiki/Getting-Started-installations) for further instructions on how to install the necessary components.
 
-
-cPanel & SSH Install
---------------------
-
-If you own on a **VPS**, **Dedicated Server**, or **Shared Hosting** running on **cPanel** with **SSH** access:
-
-You can run our Stand-alone [WS-OSPOS-Installer](https://github.com/WebShells/WS-OSPOS-Installer.git), it will handle:
-
-
-. Database.php config files generation.
-
-. Creation of db User & Password depending on user's input of Dbname, Username, Password, & Hostname ( No need for phpmyadmin )
-
-. Imports default Db SQL files in order to run the project.
-
-Usage in **(SSH)**:
-
-git clone https://github.com/WebShells/WS-OSPOS-Installer.git
-
-chmod +x WS-OSPOS-Installer/Get-POS 
-
-./WS-OSPOS-Installer/Get-POS 
-
-or
-
-wget https://github.com/WebShells/WS-OSPOS-Installer/archive/master.zip
-
-unzip -qq master.zip
-
-chmod +x WS-OSPOS-Installer-master/Get-POS
-
-./WS-OSPOS-Installer-master/Get-POS
-
-Answer **DB required questions** and you are ready to run the project on http://localhost/OSPOS/public (localhost to be replaced by the hostname provided during setup).

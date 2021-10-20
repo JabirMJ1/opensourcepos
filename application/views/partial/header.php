@@ -25,8 +25,8 @@
 		<!-- start css template tags -->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.autocomplete.css"/>
 		<link rel="stylesheet" type="text/css" href="css/invoice.css"/>
-		<link rel="stylesheet" type="text/css" href="css/ospos.css"/>
 		<link rel="stylesheet" type="text/css" href="css/ospos_print.css"/>
+		<link rel="stylesheet" type="text/css" href="css/ospos.css"/>
 		<link rel="stylesheet" type="text/css" href="css/popupbox.css"/>
 		<link rel="stylesheet" type="text/css" href="css/receipt.css"/>
 		<link rel="stylesheet" type="text/css" href="css/register.css"/>
@@ -64,6 +64,7 @@
 		<script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
 		<!-- endbower -->
 		<!-- start js template tags -->
+		<script type="text/javascript" src="dist/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/clipboard.min.js"></script>
 		<script type="text/javascript" src="js/imgpreview.full.jquery.js"></script>
 		<script type="text/javascript" src="js/manage_tables.js"></script>
@@ -75,7 +76,11 @@
 		<![endif]-->
 		<!-- start mincss template tags -->
 		<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css"/>
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=d0bbe25210"/>
+=======
+		<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=88e63d8098"/>
+>>>>>>> upstream/master
 		<!-- end mincss template tags -->
 
 		<!-- Tweaks to the UI for a particular theme should drop here  -->
@@ -84,7 +89,11 @@
 	<?php } ?>
 
 		<!-- start minjs template tags -->
+<<<<<<< HEAD
 		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=42215ed4da"></script>
+=======
+		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=64a537c419"></script>
+>>>>>>> upstream/master
 		<!-- end minjs template tags -->
 	<?php endif; ?>
 
@@ -109,7 +118,7 @@
 				<div class="navbar-right" style="margin:0">
 					<?php echo anchor('home/change_password/'.$user_info->person_id, $user_info->first_name . ' ' . $user_info->last_name, array('class' => 'modal-dlg', 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('employees_change_password'))); ?>
 					<?php echo '  |  ' . ($this->input->get('debug') == 'true' ? $this->session->userdata('session_sha1') . '  |  ' : ''); ?>
-					<?php echo anchor('home/logout', $this->lang->line('common_logout')); ?>
+					<?php echo anchor('home/logout', $this->lang->line('login_logout')); ?>
 				</div>
 
 				<div class="navbar-center" style="text-align:center">
@@ -148,4 +157,3 @@
 
 		<div class="container">
 			<div class="row">
-

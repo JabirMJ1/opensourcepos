@@ -1,16 +1,13 @@
 FROM php:7.4-apache AS ospos
-MAINTAINER jekkos
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libicu-dev \
     libgd-dev \
     openssl
 
-
-RUN a2enmod rewrite
+RUN a2enmod rewrite headers
 RUN docker-php-ext-install mysqli bcmath intl gd
 RUN echo "date.timezone = \"\${PHP_TIMEZONE}\"" > /usr/local/etc/php/conf.d/timezone.ini
-RUN echo -e “$(hostname -i)\t$(hostname) $(hostname).localhost” >> /etc/hosts
 
 WORKDIR /app
 COPY . /app
@@ -39,4 +36,3 @@ RUN yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
-
